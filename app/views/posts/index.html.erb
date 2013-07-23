@@ -1,6 +1,14 @@
-<% @posts.each do |post| %>
-  <div>
-    <h2><%= post.title %></h2>
-    <p><%= post.body %></p>
+<div class='posts'>
+  <div class='posts-head'>
+    <h3 class="subheader">My Recent Blog Posts</h3>
   </div>
-<% end %>
+
+  <div class='posts-body'>
+  <% @posts.each do |post| %>
+    <h4 class="subheader"><%= post.title %></h4>
+    <div class='panel'><%= post.body %></div>
+  <% end %>
+  </div>
+</div>
+
+<%= link_to 'New Post', new_post_path, class: "button radius" %>
