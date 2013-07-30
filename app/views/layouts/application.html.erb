@@ -24,10 +24,10 @@
     <nav class="top-bar">
       <ul class="title-area">
         <li class="name" id='title_name'>
-          <h1>
-            <span id='blog-icon'></span>
-            <%= link_to "Awesome Blog Application", posts_path %>
-          </h1>
+          <div id='blog-icon'>
+            <%= link_to image_tag("blog_icon.png", size: "50x40"), posts_path %>
+          </div>
+          <h1> Web Developer's Blog </h1>
         </li>
       </ul>
       <section class="top-bar-section">
@@ -50,6 +50,8 @@
       </div>
       <%= render 'categories' %>
     </div>
+
+    <div id="footer">All Credits Deserved</div>
 
     <%= javascript_include_tag "application" %>
   </body>

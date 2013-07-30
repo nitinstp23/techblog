@@ -4,11 +4,14 @@
   </div>
 
   <div class='posts-body'>
-  <% @posts.each do |post| %>
-    <h4 class="subheader"><%= post.title %></h4>
-    <div class='panel'><%= post.body %></div>
-  <% end %>
+    <% @posts.each do |post| %>
+      <h4 class="subheader"><%= post.title %></h4>
+      <div class='panel round post-div'><%= post.body %></div>
+    <% end %>
   </div>
 </div>
 
-<%= link_to 'New Post', new_post_path, class: "button radius" %>
+<div class='paginators'>
+  <%= link_to_previous_page @posts, 'Newer', class: 'small button secondary round mr15' %>
+  <%= link_to_next_page @posts, 'Older', class: 'small button secondary round' %>
+</div>

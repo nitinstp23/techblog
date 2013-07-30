@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'compass-rails'
 gem 'zurb-foundation'
+gem 'kaminari'
 
 group :doc do
   gem 'sdoc', require: false
