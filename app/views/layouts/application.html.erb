@@ -1,58 +1,44 @@
 <!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
   <head>
   	<meta charset="utf-8" />
-
-  	<!-- Uncomment to make IE8 render like IE7 -->
-  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
-
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="nitinstp23">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-  	<title><%= content_for?(:title) ? yield(:title) : "My Blog App" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "Nitin Misra | Blog" %></title>
 
-  	<%= stylesheet_link_tag "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= stylesheet_link_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name" id='title_name'>
-          <div id='blog-icon'>
-            <%= link_to image_tag("blog_icon.png", size: "50x40"), posts_path %>
-          </div>
-          <h1> Web Developer's Blog </h1>
-        </li>
-      </ul>
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="divider"></li>
-          <li><%= link_to "Browse Posts", posts_path %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Topics" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Contact Me" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Hire Me" %></li>
-        </ul>
-      </div>
-    </nav>
 
-    <div class="row">
-      <div class="small-10 columns">
-        <%= yield %>
+    <%= render 'layouts/sidebar' %>
+
+    <div class="col-sm-9 col-sm-offset-3">
+      <div class="page-header">
+        <h1>@nitinstp23 </h1>
       </div>
-      <%= render 'categories' %>
+
+      <%= yield %>
+
+      <footer>
+        <hr/>
+        <p>
+          &copy; Nitin Misra, 2014
+        </p>
+      </footer>
     </div>
 
-    <div id="footer">All Credits Deserved</div>
-
-    <%= javascript_include_tag "application" %>
   </body>
+
+	<%= javascript_include_tag 'application' %>
 </html>

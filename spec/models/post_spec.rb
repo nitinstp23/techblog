@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Post do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @post = Post.create(title: 'My First Blog Post', body: 'Dummy Text')
+  end
+
+  it "is valid" do
+    @post.should be_valid
+  end  
 end

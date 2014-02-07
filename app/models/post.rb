@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  paginates_per 1
+  has_many :comments
 
-  scope :recent, order('created_at DESC')
+  scope :recent, -> { order('created_at DESC') }
 end

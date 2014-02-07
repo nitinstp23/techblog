@@ -1,17 +1,17 @@
-<div class='posts'>
-  <div class='posts-head'>
-    <h3 class="subheader">My Recent Blog Posts</h3>
-  </div>
+<% @posts.each do |post| %>
 
-  <div class='posts-body'>
-    <% @posts.each do |post| %>
-      <h4 class="subheader"><%= post.title %></h4>
-      <div class='panel round post-div'><%= post.body %></div>
-    <% end %>
-  </div>
-</div>
+  <article class="home">
 
-<div class='paginators'>
-  <%= link_to_previous_page @posts, 'Newer', class: 'small button secondary round mr15' %>
-  <%= link_to_next_page @posts, 'Older', class: 'small button secondary round' %>
-</div>
+    <span class="post-date">
+      <%= post.created_at.strftime('%B %d, %Y') %>
+    </span>
+
+    <h2>
+      <%= link_to post.title, post, target: '_blank' %>
+    </h2>
+
+    <p><%= post.body %></p>
+
+  </article>
+
+<% end %>
