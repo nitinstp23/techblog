@@ -1,6 +1,6 @@
 Teckblog::Application.routes.draw do
 
-  resources :posts, only: [:index, :show]
+  resources :posts
 
   root 'posts#index'
 end

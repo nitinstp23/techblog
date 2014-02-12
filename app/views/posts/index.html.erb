@@ -1,17 +1,19 @@
+<div class='page-header'>
+  <h1>@nitinstp23</h1>
+</div>
+
 <% @posts.each do |post| %>
-
-  <article class="home">
-
-    <span class="post-date">
+  <article class='home'>
+    <span class='post-date'>
       <%= post.created_at.strftime('%B %d, %Y') %>
     </span>
-
     <h2>
       <%= link_to post.title, post, target: '_blank' %>
     </h2>
-
-    <p><%= post.body %></p>
-
+    <p><%= raw post.brief %></p>
   </article>
-
 <% end %>
+
+<hr />
+
+<div>Pagination Goes Here</div>

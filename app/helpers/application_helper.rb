@@ -24,4 +24,15 @@ module ApplicationHelper
   def company_url
     'http://www.rsystems.com/'
   end
+
+  def error_messages_for(record, field_name)
+    return if record.blank? || record.errors[field_name].blank?
+
+    raw(
+      record.errors[field_name].collect do |error_message|
+        error_message = "#{field_name.to_s.humanize} #{error_message.to_s}"
+        content_tag :span, error_message, class: 'help-inline'
+      end.join
+    )
+  end
 end

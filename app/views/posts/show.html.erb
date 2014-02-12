@@ -1,0 +1,13 @@
+<div class='page-header'>
+  <h1><%= @post.title %></h1>
+</div>
+
+<div>
+  <span class='post-date'>
+    <%= @post.created_at.strftime('%B %d, %Y') %>
+  </span>
+
+  <div class='article_body'>
+    <%= raw @post.body %>
+  </div>
+</div>

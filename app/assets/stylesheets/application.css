@@ -3,6 +3,16 @@
  *= require_self
  */
 
-#bio {
+#bio { font-size: 14px; }
+
+.post-date {
+  text-transform: uppercase;
   font-size: 14px;
+  letter-spacing: 3px;
+}
+
+.help-inline {
+  color: red;
+  display: block;
+  margin-top: 5px;
 }

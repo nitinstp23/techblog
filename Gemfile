@@ -5,6 +5,8 @@ gem 'sqlite3', '~> 1.3.8'
 gem 'sass-rails', '~> 4.0.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails', '~> 3.1.0'
+gem 'nokogiri', '~> 1.6.1'
+gem 'redcarpet', '~> 3.0.0'
 
 group :doc do
   gem 'sdoc', require: false
