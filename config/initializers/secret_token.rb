@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Teckblog::Application.config.secret_key_base = 'e855befffea625e25504d62d43b13a7f2352a0a889d52aeb34342d184bbf7b4585192749a8b11cfd99127c051b559e9578e7785ee69b4992bd159e80c54ce8d5'
+Techblog::Application.config.secret_key_base = 'e855befffea625e25504d62d43b13a7f2352a0a889d52aeb34342d184bbf7b4585192749a8b11cfd99127c051b559e9578e7785ee69b4992bd159e80c54ce8d5'

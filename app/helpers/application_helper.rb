@@ -35,4 +35,17 @@ module ApplicationHelper
       end.join
     )
   end
+
+  def signout_link
+    return unless signed_in?
+
+    str = content_tag :li, '', class: 'divider'
+    str += content_tag :li do
+      link_to signout_sessions_url do
+        content_tag :i, 'Sign out', class: 'fa fa-sign-out'
+      end
+    end
+
+    raw(str)
+  end
 end

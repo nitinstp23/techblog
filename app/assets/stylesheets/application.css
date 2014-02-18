@@ -3,6 +3,8 @@
  *= require_self
  */
 
+.container { min-height: 550px; }
+
 #bio { font-size: 14px; }
 
 .post-date {
@@ -16,3 +18,10 @@
   display: block;
   margin-top: 5px;
 }
+
+.signin-form {
+  margin-top: 50px;
+  margin-bottom: 200px;
+}
+
+.alert-error { background-color: pink; }

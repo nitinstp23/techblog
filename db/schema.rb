@@ -11,21 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119110814) do
+ActiveRecord::Schema.define(version: 20140215195356) do
 
-  create_table "comments", force: true do |t|
+  create_table "posts", force: true do |t|
+    t.string   "title",                   null: false
+    t.string   "slug",                    null: false
+    t.integer  "views_count", default: 0
     t.text     "body"
-    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.text     "body"
+  create_table "users", force: true do |t|
+    t.string   "name",                        null: false
+    t.string   "password_digest",             null: false
+    t.integer  "sign_in_count",   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "views_count", default: 0
   end
 
 end

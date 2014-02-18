@@ -1,0 +1,11 @@
+<%= paginator.render do -%>
+  <ul class='pager'>
+    <%= prev_page_tag %>
+
+    <li>
+      <span class='page_number'> Page: <%= current_page %> </span>
+    </li>
+
+    <%= next_page_tag %>
+  </ul>
+<% end -%>

@@ -8,22 +8,16 @@
         <i class='fa fa-home'></i> Home
       <% end %>
     </li>
-    <li>
-      <%= link_to root_url do %>
-        <i class='fa fa-folder'></i> Categories
-      <% end %>
-    </li>
-    <li>
-      <%= link_to root_url do %>
-        <i class='fa fa-tags'></i> Tags
-      <% end %>
-    </li>
+
     <li class='divider'></li>
     <li>
-      <a href='#'>
-        <i class='fa fa-arrow-up'></i> Top of Page
-      </a>
+      <%= link_to new_post_url do %>
+        <i class='fa fa-plus'></i> New Post
+      <% end %>
     </li>
+
+    <%= signout_link %>
+
   </ul>
 </div>
 
@@ -42,7 +36,6 @@
     Rubyist at <%= link_to 'R Systems Inc.', company_url %> <br />
     Lives in Noida, India <br />
     Phone: +91 9650733599 <br />
-    Email: nitin.misra23@gmail.com
   </div>
 
   <div id='contact-list' class='text-center'>

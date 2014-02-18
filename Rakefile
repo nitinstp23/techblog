@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Teckblog::Application.load_tasks
+Techblog::Application.load_tasks

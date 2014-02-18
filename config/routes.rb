@@ -1,6 +1,15 @@
-Teckblog::Application.routes.draw do
+Techblog::Application.routes.draw do
 
-  resources :posts
+  resources :users, only: [:edit, :update], scope: 'admin'
+
+  resources :sessions, only: [:new, :create] do
+    get :signout, as: :signout, on: :collection
+  end
+
+  resources :posts, except: [:edit, :update, :destroy] do
+    get 'page/:page', action: :index, on: :collection
+  end
 
   root 'posts#index'
+
 end

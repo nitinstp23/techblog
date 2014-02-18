@@ -1,0 +1,7 @@
+<li class='next <%= current_page.last? ? "disabled" : "" %>'>
+  <%=
+    link_to_unless(current_page.last?, t('views.pagination.next').html_safe, url) do |name|
+      link_to(name, '#')
+    end
+  %>
+</li>
