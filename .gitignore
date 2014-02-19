@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 /vendor
+/config/database.yml
+/config/database-example.yml

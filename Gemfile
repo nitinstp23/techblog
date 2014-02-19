@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.2'
-gem 'sqlite3', '~> 1.3.8'
+gem 'pg', '~> 0.17.1'
 gem 'sass-rails', '~> 4.0.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails', '~> 3.1.0'
