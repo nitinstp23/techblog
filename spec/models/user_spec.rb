@@ -31,7 +31,7 @@ describe User do
     end
 
     it 'passes with valid attributes' do
-      user = User.new(name: 'nitin', password: 'password', password_confirmation: 'password')
+      user = create(:user, name: 'nitin', password: 'password', password_confirmation: 'password')
       user.should be_valid
     end
   end
@@ -39,7 +39,7 @@ describe User do
   describe 'Instance Methods' do
     describe '#increment_sign_in_count!' do
       it 'increments sign_in_count by 1' do
-        user = User.new(name: 'nitin', password: 'password', password_confirmation: 'password')
+        user = create(:user)
 
         user.should_receive(:save!).and_return(nil)
 
@@ -50,14 +50,14 @@ describe User do
 
     describe '#first_login?' do
       it 'returns true is sign_in_count is 1' do
-        user = User.new(name: 'nitin', password: 'password', password_confirmation: 'password')
+        user = create(:user)
         user.sign_in_count = 1
 
         user.send(:first_login?).should == true
       end
 
       it 'returns false is sign_in_count is not 1' do
-        user = User.new(name: 'nitin', password: 'password', password_confirmation: 'password')
+        user = create(:user)
         user.sign_in_count = 2
 
         user.send(:first_login?).should == false

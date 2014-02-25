@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_action :authenticate
 
   def edit
@@ -6,9 +7,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.first
+    @user = User.find_by(id: params[:id])
 
-    if @user.update(password_params)
+    if @user.update(update_params)
       redirect_to root_url, notice: 'Password Changed Successfully'
     else
       render :edit
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
 
   private
 
-  def password_params
+  def update_params
     params.require(:user).permit(:password, :password_confirmation)
   end
 

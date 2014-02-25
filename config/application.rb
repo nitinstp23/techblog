@@ -24,5 +24,6 @@ module Techblog
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = false
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    config.autoload_paths += %W(#{config.root}/lib/techblog)
   end
 end

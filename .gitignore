@@ -16,4 +16,5 @@
 /tmp
 /vendor
 /config/database.yml
-/config/database-example.yml
+/config/info.yml
+/coverage

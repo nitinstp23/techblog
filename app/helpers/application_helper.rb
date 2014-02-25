@@ -1,28 +1,28 @@
 module ApplicationHelper
 
   def avatar_url
-    gravatar_id = Digest::MD5.hexdigest('nitin.misra23@gmail.com')
+    gravatar_id = Digest::MD5.hexdigest(Techblog::Info::EMAIL)
     "http://gravatar.com/avatar/#{gravatar_id}.png/?s=160"
   end
 
   def github_url
-    'http://github.com/nitinstp23'
+    Techblog::Info::GITHUB
   end
 
   def twitter_url
-    'http://twitter.com/nitinstp23'
+    Techblog::Info::TWITTER
   end
 
   def linkedin_url
-    'http://www.linkedin.com/profile/view?id=174543476'
+    Techblog::Info::LINKEDIN
   end
 
   def mailto_url
-    'mailto:nitin.misra23@gmail.com'
+    "mailto:#{Techblog::Info::EMAIL}"
   end
 
   def company_url
-    'http://www.rsystems.com/'
+    Techblog::Info::COMPANY
   end
 
   def error_messages_for(record, field_name)
@@ -41,7 +41,7 @@ module ApplicationHelper
 
     str = content_tag :li, '', class: 'divider'
     str += content_tag :li do
-      link_to signout_sessions_url do
+      link_to session_path(session[:user_id]), method: :delete do
         content_tag :i, 'Sign out', class: 'fa fa-sign-out'
       end
     end

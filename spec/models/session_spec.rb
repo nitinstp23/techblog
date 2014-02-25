@@ -30,7 +30,7 @@ describe Session do
     end
 
     it 'fails if username or password is wrong' do
-      user = User.new(name: 'nitin', password: 'password', password_confirmation: 'password')
+      user = create(:user)
 
       session1 = Session.new username: 'wrong_username', password: 'password'
       User.should_receive(:find_by).with({name: 'wrong_username'}).and_return(nil)
@@ -43,7 +43,7 @@ describe Session do
     end
 
     it 'passes with valid attributes' do
-      user = User.new(name: 'nitin', password: 'password', password_confirmation: 'password')
+      user = create(:user)
 
       session = Session.new username: 'nitin', password: 'password'
       User.should_receive(:find_by).with({name: 'nitin'}).and_return(user)
@@ -65,7 +65,7 @@ describe Session do
 
     describe '#valid?' do
       before do
-        @user = User.new(name: 'nitin', password: 'password', password_confirmation: 'password')
+        @user = create(:user)
         User.should_receive(:find_by).with({name: 'nitin'}).and_return(@user)
       end
 
@@ -94,7 +94,7 @@ describe Session do
 
     describe '#user' do
       before do
-        @user = User.new(name: 'nitin', password: 'password', password_confirmation: 'password')
+        @user = create(:user)
       end
 
       context 'with valid username' do

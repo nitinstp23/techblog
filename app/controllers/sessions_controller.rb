@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  before_action :redirect_if_signed_in, only: [:new, :create]
-  skip_before_action :authenticate, only: [:new, :create]
+
+  before_action :redirect_if_signed_in, except: [:destroy]
 
   def new
     @session = Session.new
@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def signout
+  def destroy
+    authenticate # redirect unless signed in
     session[:user_id] = nil
     redirect_to root_url
   end

@@ -1,12 +1,15 @@
+require 'syntax_highlighter'
+
 class Post < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
 
   validates :title, :body, presence: true
+  validates :slug, presence: true, uniqueness: { case_sensitive: true }
 
   scope :recent, -> { order('created_at DESC') }
 
+  before_validation :generate_slug, if: 'title.present?'
   before_save :highlight_syntax, if: 'body.present?'
-  before_save :generate_slug
 
   paginates_per 10
 
@@ -21,7 +24,7 @@ class Post < ActiveRecord::Base
   private
 
   def highlighter
-    SyntaxHighlighter.new(text: self.body)
+    Techblog::SyntaxHighlighter.new(text: self.body)
   end
 
   def highlight_syntax
@@ -29,6 +32,6 @@ class Post < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug = self.title.downcase.gsub(/\s/, '-')
+    self.slug = self.title.parameterize
   end
 end

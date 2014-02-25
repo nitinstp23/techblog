@@ -11,16 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140215195356) do
+ActiveRecord::Schema.define(version: 20140224200916) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "posts", force: true do |t|
     t.string   "title",                   null: false
     t.string   "slug",                    null: false
     t.integer  "views_count", default: 0
-    t.text     "body"
+    t.text     "body",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name",                        null: false
@@ -29,5 +34,7 @@ ActiveRecord::Schema.define(version: 20140215195356) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
 
 end
