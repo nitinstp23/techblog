@@ -13,5 +13,6 @@ gem 'kaminari', '~> 0.15.1'
 group :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails', '~> 4.4.0'
+  gem 'webmock', '~> 1.17.4'
   gem 'simplecov', '~> 0.8.2'
 end

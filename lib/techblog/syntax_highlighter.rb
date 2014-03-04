@@ -4,33 +4,34 @@ require 'net/http'
 module Techblog
   class SyntaxHighlighter
 
-    def initialize(text: '')
-      html = parse_to_html(text)
-      @doc = Nokogiri::HTML(html)
+    PYGMENTS_URI = 'http://pygments.appspot.com/'
 
-      highlight_code_fragments
+    def initialize(text: '')
+      @text = text
     end
 
     def to_s
+      build_html_doc
+      highlight_code_fragments
+
       Redcarpet::Render::SmartyPants.render(
-        @doc.search('//body').children.to_s
+        @html_doc.search('//body').children.to_s
       )
     end
 
     private
 
     def pygments_uri
-      @pygments_uri ||= URI.parse('http://pygments.appspot.com/')
+      @pygments_uri ||= URI.parse(PYGMENTS_URI)
     end
 
-    def parse_to_html(text)
-      markdown = Redcarpet::Markdown.new(
+    def markdown_renderer
+      Redcarpet::Markdown.new(
         Redcarpet::Render::HTML.new(hard_wrap: true),
         no_intra_emphasis: true,
         autolink: true,
         fenced_code_blocks: true
       )
-      markdown.render(text)
     end
 
     def call_pygments_api(code_class, code_text)
@@ -43,8 +44,13 @@ module Techblog
       raise StandardError, "Error occurred while calling Pygments API : #{ex.message}"
     end
 
+    def build_html_doc
+      html      = markdown_renderer.render(@text)
+      @html_doc = Nokogiri::HTML(html)
+    end
+
     def highlight_code_fragments
-      @doc.search('pre > code[class]').each do |code|
+      @html_doc.search('pre > code[class]').each do |code|
         response = call_pygments_api(code[:class], code.text)
 
         code.parent.replace(response.body)
